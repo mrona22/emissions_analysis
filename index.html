@@ -1,0 +1,204 @@
+<html lang="en"><head>
+    <title>Project 2 Report</title>
+    <style>
+      :root {
+        --color-neutral-95: hsl(220 10% 95%);
+        --color-neutral-90: hsl(220 10% 90%);
+        --color-neutral-80: hsl(220 10% 80%);
+        --color-neutral-70: hsl(220 10% 70%);
+        --color-neutral-60: hsl(220 10% 60%);
+        --color-neutral-50: hsl(220 10% 50%);
+        --color-neutral-40: hsl(220 10% 40%);
+        --color-neutral-30: hsl(220 10% 30%);
+        --color-neutral-20: hsl(220 10% 20%);
+        --color-neutral-10: hsl(220 10% 10%);
+      }
+
+      html {
+        font: 100%/1.5 system-ui;
+        counter-reset: figure;
+        background: var(--color-neutral-95);
+        max-width: min(75vw, 80em);
+        margin: 0 auto;
+      }
+
+      /* Headings */
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        line-height: 1.1;
+        font-weight: 600;
+        text-wrap: balance;
+      }
+
+      h1,
+      h2 {
+        border-bottom: 1px solid var(--color-neutral-80);
+        padding-bottom: 0.2em;
+      }
+
+      h1 {
+        margin-block: 1em 0.5rem;
+        font-size: clamp(2.5em, 150% + 2vh + 2vw, 10vmin);
+        font-weight: 800;
+
+        small {
+          display: block;
+          width: fit-content;
+          padding: 0.2em 0.5em;
+          margin-inline: auto;
+          color: white;
+          background: var(--color-neutral-40);
+          font-size: 40%;
+          text-transform: uppercase;
+          white-space: nowrap;
+        }
+      }
+
+      h2 {
+        font-size: 180%;
+        color: var(--color-neutral-30);
+      }
+
+      h3 {
+        font-size: 130%;
+      }
+
+      /* Lists */
+
+      ul,
+      ol {
+        padding-inline-start: 2em;
+      }
+
+      li {
+        &::marker {
+          color: var(--color-neutral-40);
+        }
+
+        + li {
+          margin-top: 0.2em;
+        }
+      }
+
+      /* Sectioning elements */
+
+      header {
+        padding-block: 1em;
+        text-align: center;
+      }
+
+      main {
+        background: white;
+        color: var(--color-neutral-20);
+        border-radius: 1rem;
+        padding: 0.1rem 2rem;
+      }
+
+      /* Figures */
+
+      figure {
+        margin: 1em 0;
+        padding: 0.5rem;
+        margin-inline: -0.5em;
+        border: 1px solid var(--color-neutral-80);
+        box-shadow: 0 0.1em 0.2em var(--color-neutral-95);
+        text-align: center;
+        background: white;
+
+        > figcaption {
+          font: 500 75% var(--font-sans);
+          background: var(--color-neutral-95);
+          padding: 0.5rem;
+          margin: -0.5rem;
+          margin-top: 0.5rem;
+          counter-increment: figure;
+          text-align: left;
+
+          &::before {
+            content: 'Figure ' counter(figure) ': ';
+            font-weight: bold;
+            color: var(--color-neutral-40);
+          }
+
+          a:not(:hover, :focus, :active) {
+            color: inherit;
+            text-decoration: underline;
+            text-decoration-color: color-mix(
+              in lab,
+              currentColor,
+              transparent 70%
+            );
+          }
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        <small>Assignment 4</small>
+        Persuasive or Deceptive Visualization?
+      </h1>
+
+      <p><strong> Milan Rona </strong> — <em> mrona@ucsd.edu</em></p>
+    </header>
+
+    <main>
+      <h2>Is China actively aligning with global climate goals by reducing its emissions?</h2>
+
+      <section>
+        <h3>China has taken neccesary steps to check it's C02 emissions even through rapid economic growth</h3>
+
+        <figure>
+            <iframe src="./graphs/china_usa_gdp_ems_trend.html" width="1000" height="450" style="border:none;"></iframe>
+            <figcaption>China’s emissions have begun to decrease while GDP slows, showing progress that contrasts with typical Western media portrayals.</figcaption>
+        </figure>
+              
+
+        <p>For this chart, I wanted to visualize the trajectory of GDP and emissions changes over time for both China and the U.S. My goal was to challenge the narrative that China isn’t participating in climate action by showing that China’s emissions have been decreasing in line with a slowdown in GDP growth — a pattern that mirrors global efforts toward sustainability.
+
+            Why a line chart?
+            I chose a line chart because I wanted to emphasize trends over time. It’s the clearest way to show how the GDP and emissions percent changes are evolving in parallel for both countries. Plus, it supports the broader story I’m telling — that China’s curve is not just random, but follows a global pattern.
+        
+            I wanted the framing to prompt viewers to reconsider their assumptions as they interpret the data.</p>
+
+        <ul>
+          <li>I used a rolling average to smooth noisy year-over-year changes and highlight long-term trends.</li>
+          <li>Solid lines represent GDP while dashed lines represent emissions, allowing easy visual comparison within countries.</li>
+          <li>I selected a diverging color palette inspired by Cynthia Brewer to visually separate China vs. USA while keeping related metrics visually cohesive.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>China’s emission reductions closely follow economic slowdown, raising doubts about genuine climate commitment.</h3>
+
+        <figure>
+            <iframe src="./graphs/final_china_inverse.html" width="1100" height="500" style="border:none;"></iframe>
+            <figcaption>China’s emissions have begun to decrease while GDP slows, showing progress that contrasts with typical Western media portrayals.</figcaption>
+        </figure>
+
+        <p>The design decisions were made to ensure clarity and effective communication of the data. The key design choices were focused on accurately representing the data while addressing missing values, and providing a clean visual comparison between the USA and China. The rationale behind each decision is outlined below</p>
+
+        <ul>
+          <li>A grouped bar chart was selected for its ability to display comparisons between the USA and China across years clearly.</li>
+          <li>A symmetric log transformation was applied to better represent both negative and positive emissions changes, making the data more interpretable.</li>
+          <li>Used mean interpolation for 2015, to make it look like it is a trend</li>
+          <li>A subtitle was added to explain the paradoxical trend, providing context to the data about China’s emissions and GDP growth.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Final Reflection</h2>
+
+        <p>[WRITE FINAL REFLECTION PARAGRAPHS HERE.]</p>
+      </section>
+    </main>
+  
+
+</body></html>
