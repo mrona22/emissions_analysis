@@ -100,6 +100,22 @@
       }
 
       /* Figures */
+      .responsive-iframe-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio */
+        height: 0;
+        overflow: hidden;
+        }
+
+        .responsive-iframe-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+        }
 
       figure {
         margin: 1em 0;
@@ -156,22 +172,20 @@
         <h3>China has taken neccesary steps to check it's C02 emissions even through rapid economic growth</h3>
 
         <figure>
-            <iframe src="./graphs/china_usa_gdp_ems_trend.html" width="1000" height="450" style="border:none;"></iframe>
+            <div class="responsive-iframe-container">
+                <iframe src="./graphs/china_us_line.html"></iframe>
+            </div>         
             <figcaption>China’s emissions have begun to decrease while GDP slows, showing progress that contrasts with typical Western media portrayals.</figcaption>
         </figure>
               
 
-        <p>For this chart, I wanted to visualize the trajectory of GDP and emissions changes over time for both China and the U.S. My goal was to challenge the narrative that China isn’t participating in climate action by showing that China’s emissions have been decreasing in line with a slowdown in GDP growth — a pattern that mirrors global efforts toward sustainability.
-
-            Why a line chart?
-            I chose a line chart because I wanted to emphasize trends over time. It’s the clearest way to show how the GDP and emissions percent changes are evolving in parallel for both countries. Plus, it supports the broader story I’m telling — that China’s curve is not just random, but follows a global pattern.
-        
-            I wanted the framing to prompt viewers to reconsider their assumptions as they interpret the data.</p>
-
-        <ul>
-          <li>I used a rolling average to smooth noisy year-over-year changes and highlight long-term trends.</li>
-          <li>Solid lines represent GDP while dashed lines represent emissions, allowing easy visual comparison within countries.</li>
-          <li>I selected a diverging color palette inspired by Cynthia Brewer to visually separate China vs. USA while keeping related metrics visually cohesive.</li>
+        <p>This line chart aimed to challenge common narratives by comparing GDP and emissions trends for China and the U.S. over time. It highlights how China's emissions decline aligns with slowing GDP growth — a signal of its climate efforts. The design encourages viewers to rethink assumptions about China’s role in global sustainability.</p> 
+        <ul> 
+            <li> <strong>Line chart to show trends</strong> — <em>Score: 2 (earnest)</em><br> Best suited for showing parallel movement over time. Reinforces the narrative of synchronized shifts in GDP and emissions. </li> 
+            <li> <strong>3-year rolling average</strong> — <em>Score: -1 (fairly deceptive)</em><br> Smoothed out China's decline in emissions, while there it wasn't that smooth </li> 
+            <li> <strong>Line styles (solid vs dashed)</strong> — <em>Score: 2 (earnest)</em><br> Clearly differentiates GDP from emissions. Makes the chart easy to follow without relying on color alone. </li> 
+            <li> <strong>Diverging color palette</strong> — <em>Score: 1.5 (mostly earnest)</em><br> Visually separates countries while grouping their metrics. Accessible and intentional color design. </li>
+            <li> <strong>Only Showing up 2015</strong> — <em>Score: 0 (fair)</em><br> There was some ossilaiton going on after 2015, with China emissions rising, so decided to cut</li> 
         </ul>
       </section>
 
@@ -179,24 +193,31 @@
         <h3>China’s emission reductions closely follow economic slowdown, raising doubts about genuine climate commitment.</h3>
 
         <figure>
-            <iframe src="./graphs/final_china_inverse.html" width="1100" height="500" style="border:none;"></iframe>
+            <div class="responsive-iframe-container">
+                <iframe src="./graphs/final_china_inverse_2.html"></iframe>
+            </div>
             <figcaption>China’s emissions have begun to decrease while GDP slows, showing progress that contrasts with typical Western media portrayals.</figcaption>
         </figure>
 
-        <p>The design decisions were made to ensure clarity and effective communication of the data. The key design choices were focused on accurately representing the data while addressing missing values, and providing a clean visual comparison between the USA and China. The rationale behind each decision is outlined below</p>
-
-        <ul>
-          <li>A grouped bar chart was selected for its ability to display comparisons between the USA and China across years clearly.</li>
-          <li>A symmetric log transformation was applied to better represent both negative and positive emissions changes, making the data more interpretable.</li>
-          <li>Used mean interpolation for 2015, to make it look like it is a trend</li>
-          <li>A subtitle was added to explain the paradoxical trend, providing context to the data about China’s emissions and GDP growth.</li>
+        <p>The design decisions aimed to make the visualization both clear and compelling, while navigating the line between persuasion and distortion. Below are key choices and their justifications:</p> 
+        <ul> 
+            <li> <strong>Grouped bar chart</strong> — <em>Score: 2 (earnest)</em><br> Chosen for side-by-side comparison of China and U.S. across years. Clear and direct. Line charts were too cluttered. </li>
+            <li> <strong>Symlog transformation</strong> — <em>Score: -1 (somewhat deceptive)</em><br> Used to handle extreme values and make trends readable. But it compresses the visual impact of larger swings. </li> 
+            <li> <strong>Interpolated 2015 with mean</strong> — <em>Score: -1.5 (fairly deceptive)</em><br> Smoothed a gap to suggest continuity. Makes the trend look cleaner, acted like data didn't exist. </li>
+            <li> <strong>Deleted 1999</strong> — <em>Score: -1.5 (fairly deceptive)</em><br> America had a high emissions year, so it had to go.</li>  
+            <li> <strong>Explanatory subtitle</strong> — <em>Score: 1.5 (mostly earnest)</em><br> Adds context about China’s emissions drop. Frames the data, but still reflects real patterns. </li> 
         </ul>
       </section>
 
       <section>
         <h2>Final Reflection</h2>
 
-        <p>[WRITE FINAL REFLECTION PARAGRAPHS HERE.]</p>
+        <p> Throughout the design process, selecting the right dataset to complement the emissions data was more challenging than expected. I experimented with several options — GDP, GDP per capita, and other economic indicators — before ultimately deciding that absolute GDP change told the clearest story. My primary goal was to present an alternative perspective on China's emissions behavior, and finding a pairing that could persuasively support that narrative took time. I opted to use percentage changes instead of raw values to avoid relying on a dual-axis chart, which can often feel cluttered or misleading.
+
+            That said, I acknowledge that some of the transformations I used — like a symmetric log scale and moving averages — stretch the boundaries of ethical visualization. While these techniques can help reveal trends, I was also aware that adjusting parameters like the rolling mean window or symlog threshold could amplify the effect I wanted to emphasize. This raises a fundamental ethical question: when does adjusting data presentation shift from insightful to manipulative? In my view, it becomes unethical when the transformation isn’t necessary for comprehension but is instead used to push a narrative.
+            
+            Looking back, I now define ethical analysis and visualization as grounded in transparency and intent. If a transformation aids understanding without distorting the truth, it’s likely ethical. But if it serves primarily to exaggerate or conceal aspects of the data, it crosses into misleading territory. Persuasion in data storytelling is not inherently unethical — it’s about where you draw the line. For me, that line is clear: transformations must serve clarity, not bias.
+        </p>
       </section>
     </main>
   
